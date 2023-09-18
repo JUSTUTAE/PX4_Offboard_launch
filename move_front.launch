@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- Include the MAVROS node with SITL and Gazebo -->
+	<include file="$(find px4)/launch/mavros_posix_sitl.launch">
+	    <arg name="world" default="$(find mavlink_sitl_gazebo)/worlds warehouse.world"/>
+        </include>
+
+	<!-- Our node to control the drone -->
+	<node pkg="offboard_py" type="move_front.py" name="move_front" output="screen" required="true">
+		<param name="target_distance" value="7.0" />
+	</node>
+</launch>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- Include the MAVROS node with SITL and Gazebo -->
+	<include file="$(find px4)/launch/mavros_posix_sitl.launch">
+	  <arg name="world" default="$(find mavlink_sitl_gazebo)/worlds warehouse.world"/>
+        </include>
+        
+	<node name="pub_setpoints_traj" pkg="offboard_py" type="traj.py" output="screen">
+		<param name="wn" value="0.5" />
+		<param name="r" value="3.0" />
+	</node>
+</launch>
+
